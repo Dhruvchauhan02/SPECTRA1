@@ -50,7 +50,12 @@ class Settings:
     
     # ========== MODEL PATHS ==========
     MODELS_DIR = PROJECT_ROOT / "models"
-    EFFICIENTNET_MODEL_PATH = PROJECT_ROOT / "efficientnet_b0_spectra.pth"
+    import os
+
+    EFFICIENTNET_MODEL_PATH = os.getenv(
+        "EFFICIENTNET_MODEL_PATH",
+        "models/efficientnet_b0_spectra.pth"
+    )
     CLIP_MODEL_NAME = "openai/clip-vit-base-patch32"
     
     # ========== PIPELINE SETTINGS ==========
