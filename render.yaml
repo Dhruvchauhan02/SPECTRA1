@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: spectra-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter          # $7/mo — needed for >512MB RAM (ML models require ~2GB)
+    region: singapore      # closest to India
+    healthCheckPath: /health
+
+    envVars:
+      - key: SUPABASE_URL
+        value: https://ahvefroweatnduftopbt.supabase.co
+      - key: SUPABASE_KEY
+        sync: false          # set manually in Render dashboard (keeps secret)
+      - key: NEWS_API_KEY
+        sync: false
+      - key: GNEWS_API_KEY
+        sync: false
+      - key: GOOGLE_CX
+        value: a0dbf0737b5784a8c
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: DEVICE
+        value: cpu
+      - key: EFFICIENTNET_MODEL_PATH
+        value: /data/efficientnet_b0_spectra.pth
+      - key: LOG_LEVEL
+        value: INFO
+      - key: ENABLE_WARMUP
+        value: "true"
+      - key: FALLBACK_ENABLED
+        value: "true"
+      - key: ENABLE_AUTH
+        value: "false"
+
+    # Persistent disk to store the model file (survives redeploys)
+    disk:
+      name: spectra-models
+      mountPath: /data
+      sizeGB: 2

@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  spectra-api:
+    build: .
+    container_name: spectra-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      # Mount model file from host so you don't rebuild image when model changes
+      - ./efficientnet_b0_spectra.pth:/app/efficientnet_b0_spectra.pth:ro
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s   # models take time to load

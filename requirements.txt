@@ -1,0 +1,33 @@
+# requirements.txt  (Supabase edition)
+# Replaces: motor, pymongo
+
+# ── Core ──────────────────────────────────────────────────────
+numpy==1.26.4
+opencv-python
+Pillow
+scipy
+scikit-learn
+pydantic-settings>=2.0.0
+
+# ── Deep Learning ─────────────────────────────────────────────
+torch>=2.0
+torchvision
+timm
+transformers
+huggingface_hub
+efficientnet-pytorch>=0.7.0
+gdown
+# ── Vision / Face ─────────────────────────────────────────────
+insightface>=0.7.0
+ultralytics
+
+# ── Database  ─────────────────────────────────────────────────
+supabase>=2.0.0        # replaces motor + pymongo
+
+# ── API / Server ──────────────────────────────────────────────
+fastapi
+uvicorn[standard]
+python-multipart       # for file uploads
+
+# ── Optional: Streamlit dashboard ─────────────────────────────
+streamlit

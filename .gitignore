@@ -1,0 +1,45 @@
+# 🔹 Virtual Environment
+venv/
+
+# 🔹 Python Cache
+__pycache__/
+*.pyc
+*.pyo
+
+# 🔹 Environment Variables
+.env
+
+# 🔹 IDE Files
+.vscode/
+.idea/
+
+# 🔹 OS Files
+.DS_Store
+Thumbs.db
+
+# 🔹 Logs
+logs/
+*.log
+
+# 🔹 Runtime Generated Files
+uploads/
+temp/
+temp_*.jpg
+temp_*.png
+
+# 🔹 Data / Training Files
+data/
+dataset/
+raw_frames/
+
+# 🔹 DeepFace / InsightFace auto downloads
+.deepface/
+.insightface/
+
+# 🔹 Node (if ever used frontend tools)
+node_modules/
+
+*.pth
+*.pt
+models/
+ai_models/archived-models/
