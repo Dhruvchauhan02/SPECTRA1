@@ -31,3 +31,5 @@ python-multipart       # for file uploads
 
 # ── Optional: Streamlit dashboard ─────────────────────────────
 streamlit
+
+onnxruntime
