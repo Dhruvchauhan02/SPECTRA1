@@ -10,7 +10,11 @@ from typing import Dict
 
 from ai_models.face_recognition.detector import RetinaFaceDetector
 from ai_models.deepfake_detection.efficientnet_detector import EfficientNetDeepfakeDetector
-from ai_models.deepfake_detection.clip_detector import CLIPDetector
+# CLIPDetector disabled — too heavy for free deployment (600MB download)
+# Fusion uses only EfficientNet score anyway
+class _DummyCLIP:
+    def predict_proba(self, img): return 0.5
+
 from ai_models.deepfake_detection.fusion import ScoreFusion
 
 logger = logging.getLogger("spectra.pipeline")
@@ -36,8 +40,8 @@ class DeepfakePipeline:
         
         self.visual = EfficientNetDeepfakeDetector(model_path)
         
-        # CLIP is loaded but NOT used in fusion (keeping for compatibility)
-        self.clip = CLIPDetector(device=device)
+        # CLIP disabled — using dummy (not used in fusion anyway)
+        self.clip = _DummyCLIP()
         
         # Fusion uses ONLY visual score
         self.fusion = ScoreFusion()

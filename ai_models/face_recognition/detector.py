@@ -7,7 +7,7 @@ from insightface.app import FaceAnalysis
 class RetinaFaceDetector:
     def __init__(self):
         self.app = FaceAnalysis(
-            name="buffalo_l",
+            name="buffalo_sc"  # lightweight model — buffalo_l is 500MB, too heavy for free tier,
             providers=["CPUExecutionProvider"]
         )
         self.app.prepare(ctx_id=0, det_size=(640, 640))
